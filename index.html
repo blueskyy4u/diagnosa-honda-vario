@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="description"
+        content="Sistem Diagnosa Kerusakan Honda Vario menggunakan metode Forward Chaining"
+    >
+
+    <meta
+        name="theme-color"
+        content="#111827"
+    >
+
+    <title>Diagnosa Kerusakan Honda Vario</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">🏍️</span>
+            <span class="logo-text">VarioDiag</span>
+        </div>
+
+        <!-- Tombol hamburger khusus mobile -->
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Buka menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-menu" id="navMenu">
+
+            <a href="#home">
+                <span>⌂</span>
+                Home
+            </a>
+
+            <a href="#diagnosa">
+                <span>🔍</span>
+                Diagnosa
+            </a>
+
+            <a href="#tentang">
+                <span>🧠</span>
+                Tentang
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================
+         HERO / HOME
+    ========================================== -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <!-- Efek dekorasi -->
+            <div class="hero-decoration decoration-one"></div>
+            <div class="hero-decoration decoration-two"></div>
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    SISTEM PAKAR
+                </span>
+
+                <h1>
+                    Diagnosa Kerusakan
+                    <span>Honda Vario</span>
+                </h1>
+
+                <p>
+                    Sistem berbasis web untuk membantu mengidentifikasi
+                    kemungkinan kerusakan sepeda motor matic Honda Vario
+                    berdasarkan gejala yang dialami.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#diagnosa"
+                        class="btn-primary hero-button"
+                    >
+                        🔍 Mulai Diagnosa
+                    </a>
+
+                    <a
+                        href="#tentang"
+                        class="btn-outline"
+                    >
+                        Pelajari Sistem
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Ilustrasi motor -->
+            <div class="hero-motor">
+
+                <div class="motor-glow"></div>
+
+                <div class="motor-circle">
+                    🛵
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             DIAGNOSA
+        ========================================== -->
+
+        <section
+            id="diagnosa"
+            class="diagnosa-section"
+        >
+
+            <div class="section-title">
+
+                <span>DIAGNOSA</span>
+
+                <h2>
+                    Pilih Gejala yang Dialami
+                </h2>
+
+                <p>
+                    Centang gejala yang sesuai dengan kondisi
+                    sepeda motor Anda.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================
+                 PROGRESS
+            ====================================== -->
+
+            <div class="progress-container">
+
+                <div class="progress-header">
+
+                    <div class="progress-label">
+
+                        <span class="progress-icon">
+                            ✓
+                        </span>
+
+                        <div>
+                            <span class="progress-title">
+                                Gejala dipilih
+                            </span>
+
+                            <small>
+                                Pilih satu atau beberapa gejala
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <strong id="jumlahGejala">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        id="progress"
+                        class="progress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 DAFTAR GEJALA
+            ====================================== -->
+
+            <div
+                id="gejalaContainer"
+                class="gejala-grid"
+            ></div>
+
+
+            <!-- =====================================
+                 TOMBOL AKSI
+            ====================================== -->
+
+            <div class="action-area">
+
+                <button
+                    id="btnDiagnosa"
+                    class="btn-primary"
+                    type="button"
+                >
+                    <span>🔍</span>
+                    Diagnosa Sekarang
+                </button>
+
+                <button
+                    id="btnReset"
+                    class="btn-secondary"
+                    type="button"
+                >
+                    <span>↻</span>
+                    Reset
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             HASIL DIAGNOSA
+        ========================================== -->
+
+        <section
+            id="hasilSection"
+            class="hasil-section hidden"
+        >
+
+            <div class="section-title result-section-title">
+
+                <span>HASIL ANALISIS</span>
+
+                <h2>
+                    Hasil Diagnosa
+                </h2>
+
+                <p>
+                    Berikut hasil analisis berdasarkan gejala
+                    yang telah dipilih.
+                </p>
+
+            </div>
+
+
+            <div id="hasilContainer"></div>
+
+        </section>
+
+
+        <!-- =========================================
+             TENTANG
+        ========================================== -->
+
+        <section
+            id="tentang"
+            class="tentang-section"
+        >
+
+            <div class="section-title">
+
+                <span>TENTANG SISTEM</span>
+
+                <h2>
+                    Bagaimana Sistem Bekerja?
+                </h2>
+
+            </div>
+
+
+            <div class="tentang-card">
+
+                <div class="about-icon">
+                    🧠
+                </div>
+
+                <h2>
+                    Metode Forward Chaining
+                </h2>
+
+                <p>
+                    Forward Chaining merupakan metode inferensi
+                    yang melakukan proses penalaran dari fakta atau
+                    gejala yang diketahui menuju suatu kesimpulan.
+                </p>
+
+
+                <!-- =================================
+                     ALUR
+                ================================== -->
+
+                <div class="alur">
+
+                    <div class="alur-item">
+
+                        <strong>1</strong>
+
+                        <span>
+                            Gejala
+                        </span>
+
+                        <small>
+                            Fakta awal
+                        </small>
+
+                    </div>
+
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+
+                    <div class="alur-item">
+
+                        <strong>2</strong>
+
+                        <span>
+                            Rule
+                        </span>
+
+                        <small>
+                            Aturan diagnosis
+                        </small>
+
+                    </div>
+
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+
+                    <div class="alur-item">
+
+                        <strong>3</strong>
+
+                        <span>
+                            Diagnosis
+                        </span>
+
+                        <small>
+                            Hasil analisis
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🏍️ VarioDiag
+        </div>
+
+        <p>
+            © 2026 VarioDiag -
+            Sistem Diagnosa Kerusakan Honda Vario
+        </p>
+
+        <small>
+            Hasil diagnosis bersifat rekomendasi awal.
+        </small>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPT
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+    <!-- =========================================
+         MOBILE NAVBAR SCRIPT
+    ========================================== -->
+
+    <script>
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navMenu =
+            document.getElementById("navMenu");
+
+
+        /*
+         * Membuka / menutup navbar
+         * pada perangkat mobile.
+         */
+
+        if (menuToggle && navMenu) {
+
+            menuToggle.addEventListener(
+                "click",
+                () => {
+
+                    const isOpen =
+                        navMenu.classList.toggle("active");
+
+                    menuToggle.classList.toggle(
+                        "active"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        isOpen
+                    );
+
+                }
+            );
+
+
+            /*
+             * Tutup menu setelah
+             * memilih navigasi.
+             */
+
+            navMenu
+                .querySelectorAll("a")
+                .forEach(link => {
+
+                    link.addEventListener(
+                        "click",
+                        () => {
+
+                            navMenu.classList.remove(
+                                "active"
+                            );
+
+                            menuToggle.classList.remove(
+                                "active"
+                            );
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                });
+
+
+            /*
+             * Tutup menu jika user
+             * klik di luar navbar.
+             */
+
+            document.addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        !navMenu.contains(event.target) &&
+                        !menuToggle.contains(event.target)
+                    ) {
+
+                        navMenu.classList.remove(
+                            "active"
+                        );
+
+                        menuToggle.classList.remove(
+                            "active"
+                        );
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
